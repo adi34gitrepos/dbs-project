@@ -1,7 +1,28 @@
-<!--php code needed here-->
+<?php
+  $connection= mysqli_connect('localhost','root','','canteen');
+  session_start();
+  $id= $_GET['Item_id'];
+  if(isset($_POST['submit'])){
 
+  $used_stock=$_POST['Used_stock'];
+  $rem_stock=$_POST['Remaining_stock'];
+  $req_stock=$_POST['Required_stock'];
 
+  $sql="UPDATE `Items` SET `Used_stock`='$used_stock',`Remaining_stock`='$rem_stock',`Required_stock`='$req_stock' WHERE `Item_id`='$id'";
+  $result= mysqli_query($connection,$sql);
+  if($result==true){
+      $msg= "<script language='javascript'>
+                                 swal(
+                                      'Success!',
+                                      'Item Updation Completed!',
+                                      'success'
+                                      );
+            </script>";
+      header("Location: viewitem.php");
+  }
+}
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +42,7 @@
     <link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
- <?php include 'navbar_item.php'; ?>
+
  <br>
 
 
@@ -56,7 +77,7 @@
                 </div>
                 <br>
                 <div class="input-group">
-                  <span class="input-group-addon"><b>Used Stock</b></span>
+                  <span class="input-group-addon"><b>Required Stock</b></span>
                   <input id="Required_stock" type="text" class="form-control" name="Required_stock" placeholder="Enter Required Stock">
                 </div>
                 <br>
