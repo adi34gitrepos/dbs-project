@@ -44,6 +44,7 @@
                         <th>Used Stock</th>
                         <th>Remaining Stock</th>
                         <th>Required Stock</th>
+                        <th>Delete Item</th>
                     </thead>
                     <tbody>
 
@@ -53,6 +54,7 @@
                             <td><?php echo $Items['Used_stock']; ?></td>
                             <td><?php echo $Items['Remaining_stock']; ?></td>
                             <td><?php echo $Items['Required_stock']; ?></td>
+                            <td><a class="btn btn-danger" onclick="return confirm('Are u sure?')" href="deleteitem.php?id=<?php echo $row['Item_id']; ?>">Delete</a></td>
                         </tr>
 
                     </tbody>
