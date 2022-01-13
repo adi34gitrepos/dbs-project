@@ -1,4 +1,26 @@
-<!--php code needed here-->
+<?php
+  $showAlert= false;
+  if($_SERVER["REQUEST_METHOD"]=="POST"){
+    include 'dbconnect.php';
+    $food_name=$_POST['Food_name'];
+    $food_price=$_POST['Food_price'];
+    $food_type=$_POST['Food_type'];
+    $sql= "INSERT INTO `Food`(`Food_id`,`Food_name`,`Food_price`,`Food_type`) VALUES (NULL,'$food_name','$food_price','$food_type')";
+    $result= mysqli_query($con,$sql);
+    if($result){
+      $showAlert=true;
+    }
+    if($result==true){
+        $msg= "<script language='javascript'>
+                                   swal(
+                                        'Success!',
+                                        'Food Insertion Completed!',
+                                        'success'
+                                        );
+              </script>";
+    }
+  }
+ ?>
 
 
 
@@ -68,11 +90,11 @@
                   <br>
 
 
-                 <div class="input-group">
+                 <!--<div class="input-group">
                   <span class="input-group-addon"><b>Photo</b></span>
                   <input  type="file" class="form-control" name="file">
 
-              </div>
+              </div>-->
 
 
                  <br>
