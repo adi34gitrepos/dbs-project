@@ -58,7 +58,7 @@
                             <td><?php echo $row['Used_stock']; ?></td>
                             <td><?php echo $row['Remaining_stock']; ?></td>
                             <td><?php echo $row['Required_stock']; ?></td>
-                            <td><a class="btn btn-danger" onclick="return confirm('Are u sure?')" href="deleteitem.php?Item_id=<?php echo $row['Item_id']; ?>">Delete</a></td>
+                            <td><a class="btn btn-primary" href="updateitem.php?Item_id=<?php echo $row['Item_id']; ?>">Update</a></td> 
                         </tr>
 
                     </tbody>
