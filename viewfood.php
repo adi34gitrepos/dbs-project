@@ -42,6 +42,7 @@
                         <th>Food Name</th>
                         <th>Food Price</th>
                         <th>Food Type</th>
+                        <th>Delete Food</th>
                     </thead>
 
                     <?php while($row=mysqli_fetch_assoc($res)) {  ?>
@@ -51,6 +52,7 @@
 
                             <td><?php echo $row["Food_price"] ?></td>
                             <td><?php echo $row["Food_type"] ?></td>
+                            <td><a class="btn btn-danger" onclick="return confirm('Are u sure?')" href="deletefood.php?id=<?php echo $row['Food_id']; ?>">Delete</a></td>
                         </tr>
                     </tbody>
                 <?php } }?>
