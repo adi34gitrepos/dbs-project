@@ -1,10 +1,11 @@
 <?php
+
+    $connection= mysqli_connect('localhost','root','','canteen');
+
     session_start();
-     $connection= mysqli_connect('localhost','root','','canteen');
 
     $select_query="SELECT * FROM `Items`";
     $result= mysqli_query($connection,$select_query);
-    $Items=mysqli_fetch_assoc($result);
 ?>
 
 
@@ -29,6 +30,9 @@
     <?php include 'navbar_item.php'; ?>
     <br><br>
     <div class="container">
+      <?php
+        if(mysqli_num_rows($result)>=0){ ?>
+
         <div class="row">
 
             <div class="col-md-12">
@@ -47,17 +51,18 @@
                         <th>Delete Item</th>
                     </thead>
                     <tbody>
-
+                        <?php while($row=mysqli_fetch_assoc($result)) {  ?>
                         <tr>
-                            <td><?php echo $Items['Food_id']; ?></td>
-                            <td><?php echo $Items['Item_name']; ?></td>
-                            <td><?php echo $Items['Used_stock']; ?></td>
-                            <td><?php echo $Items['Remaining_stock']; ?></td>
-                            <td><?php echo $Items['Required_stock']; ?></td>
-                            <td><a class="btn btn-danger" onclick="return confirm('Are u sure?')" href="deleteitem.php?id=<?php echo $row['Item_id']; ?>">Delete</a></td>
+                            <td><?php echo $row['Food_id']; ?></td>
+                            <td><?php echo $row['Item_name']; ?></td>
+                            <td><?php echo $row['Used_stock']; ?></td>
+                            <td><?php echo $row['Remaining_stock']; ?></td>
+                            <td><?php echo $row['Required_stock']; ?></td>
+                            <td><a class="btn btn-danger" onclick="return confirm('Are u sure?')" href="deleteitem.php?Item_id=<?php echo $row['Item_id']; ?>">Delete</a></td>
                         </tr>
 
                     </tbody>
+                    <?php } }?>
                 </table>
 
 
