@@ -12,7 +12,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="newitem.php">Add New Item</a></li>
                     <li><a href="viewitem.php">View Items</a></li>
-                    <li><a href="updateitem.php">Update Items</a></li>
+                   
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="logout.php">Logout</a></li>
